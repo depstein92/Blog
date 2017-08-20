@@ -1,0 +1,22 @@
+
+include partials/header.pug
+body
+.main-wrapper
+ nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      a.navbar-brand(href='#')
+        img(alt='DWE DESIGNS', src='')
+
+ mixin articleOption(divTitle, divImage, divOptions)
+     div(class=attributes.class href=href)=divOptions
+      div=divTitle
+      img(src=divImage + ".jpg")
+
+ div.wrapper
+  +articleOption("My_Blog", "http://onbloggingwell.com/wp-content/uploads/2010/01/free").leftArticle
+  +articleOption("Gallery", "http://onbloggingwell.com/wp-content/uploads/2010/01/free").middleArticle
+  +articleOption("Contact", "http://onbloggingwell.com/wp-content/uploads/2010/01/free").rightArticle
+
+ include partials/footer.pug
+block content

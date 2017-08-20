@@ -1,0 +1,30 @@
+* {
+  font-family: 'Playfair Display SC', cursive;
+}
+body{
+    background-color: #727edb;
+}
+
+
+.container {
+  width: 1140px;
+  height: 900px;
+  background-color: white;
+}
+
+.row{
+  display: flex;
+  justify-content: space-around;
+  width: inherit;
+
+}
+
+
+
+.row .col{
+  border-radius: 25px;
+  border-style: solid;
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+}

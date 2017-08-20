@@ -1,0 +1,90 @@
+h1{
+  color: blue;
+
+}
+
+.main-wrapper{
+  background-color: #727edb;
+}
+
+
+.container{
+display: flex;
+justify-content: space-around;
+border-radius: 20px;
+}
+.container i{
+  font-size: 30px;
+  color: black;
+  top: 50px;
+  margin: 100px 0px 0px 0px;
+}
+
+
+.wrapper{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.leftArticle image{
+  border-radius: 25px;
+}
+
+.leftArticle:hover{
+  border-color: white;
+  color: white;
+}
+.middleArticle:hover{
+  border-color: white;
+  color: white;
+}
+.rightArticle:hover{
+  border-color: white;
+  color: white;
+}
+
+.leftArticle{
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: row;
+  border-style: solid;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 25px;
+  font-family: 'Playfair Display SC', cursive;
+  font-size: 20px;
+  font-weight: bold;
+}
+.middleArticle{
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: row;
+  border-style: solid;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  font-family: 'Playfair Display SC', cursive;
+  font-size: 20px;
+  font-weight: bold;
+}
+.rightArticle{
+  width: 300px;
+  height: 300px;
+  display: flex;
+  border-style: solid;
+  justify-content: flex-end;
+  align-items: center;
+  border-radius: 25px;
+  font-family: 'Playfair Display SC', cursive;
+  font-size: 20px;
+  font-weight: bold;
+}
+img{
+  font-family: 'Playfair Display SC', cursive;
+  font-size: 30px;
+  color: black;
+  border-color: black;
+}
