@@ -1,73 +1,111 @@
 const articles = require('../db/articlespg');
-
+const rowElement = require('');
 
 
 module.exports.get = function(request, response) {
-	articles.get(function(err, list) {
+  articles.get(function(err, list) {
 
-		if (err) {
+    if (err) {
       var message = "Problems displaying Info"
-			return response.render('404', {message: message});
-		}
-		response.render('test', {articles: list, title: defaultTitle});
-	})
+      return response.render('404', {
+        message: message
+      });
+    }
+    response.render('test', {
+      articles: list,
+      title: defaultTitle
+    });
+  })
 }
 
-module.exports.post = (req,res) => {
-/*id,title, body, author,showinmenu,image,description*/
+module.exports.post = (req, res) => {
+  /*id,title, body, author,showinmenu,image,description*/
 
-	req
-	  .checkBody('title', 'Invalid title')
+  req
+    .checkBody('title', 'Invalid title')
     .notEmpty()
-		.sanitizeBody('title').escape();
+    .sanitizeBody('title').escape();
   req
     .checkBody('body', 'Invalid body')
-		.notEmpty()
+    .notEmpty()
     .sanitizeBody('body').escape();
   req
     .checkBody('author', 'Invalid user')
-		.notEmpty()
-		.sanitizeBody('author').escape();
+    .notEmpty()
+    .sanitizeBody('author').escape();
 
   req
     .checkBody('image', 'Invalid image')
-		.notEmpty()
-		.sanitizeBody('image').escape();
+    .notEmpty()
+    .sanitizeBody('image').escape();
 
   req
     .checkBody('description', 'Invalid description')
-		.notEmpty()
-		.sanitizeBody('description').escape();
+    .notEmpty()
+    .sanitizeBody('description').escape();
 
 
 
-		const input = {
-					title: request.body.title,
+  const input = {
+    title: request.body.title,
 
-					author: request.body.author, //??
-					image: request.body.image,
-					description: request.body.description,
-					url: request.body.url,
-					body: request.body.body
-				}
+    author: request.body.author, //??
+    image: request.body.image,
+    description: request.body.description,
+    url: request.body.url,
+    body: request.body.body
+  }
 
 
 
-articles.makeArticle(input, (err) => {
-	if(err){
-		return res.render('/test', {
-			title: err.messege,
-			author: '-------',
-			body: err.messege,
-      image: '-------',
+  articles.makeArticle(input, (err) => {
+    if (err) {
+      return res.render('/test', {
+        title: err.messege,
+        author: '-------',
+        body: err.messege,
+        image: '-------',
 
-		})
-	}
-});
+       })
+			 return res.redirect('/gallery');
+    }
+
+		return {
+
+		}
+  //   return res.render('/gallery', (input) => { /*======could throw error===========*/
+  //     document.body.appendChild(
+	// `
+	// article#articlesAdded
+	//   h1=I am here
+  //   h1 ${articles.title}
+  //   h2 ${article.author}
+  //   img
+  //   | ${articles.image}
+  //   p2 ${articles.description}
+  //   p  ${article.body}
+	// 		`)
+  //   });
+
+  });
 
 }
-module.export.addChild = () => {}
+module.exports.new = function(request, response) {
+	response.render('new', {title: 'Create new article'}) ;
+}
 
+
+/*res.render('/gallery', (input) => {
+	document.body.appendChild(`
+article#articlesAdded
+h1  articles.title
+h2 article.author
+img
+| articles.image
+p2 articles.description
+p  article.body
+	`)
+});*/
 
 // module.exports.show = function(request, response) {
 // 		const id = request.params.id;

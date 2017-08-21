@@ -1,0 +1,23 @@
+link(rel='stylesheet', href='/stylesheets/makeArticle.css')
+include partials/header.pug
+body
+.main-wrapper
+ nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      a.navbar-brand(href='#')
+        img(alt='DWE DESIGNS', src='')
+h1='Create Article'
+form(action='/gallery', method='POST')
+  label.form-control-label(for='inputSuccess1') Title
+  input(type='text', name='title', required='', placeholder='Title')
+  label.form-control-label(for='inputSuccess1') Description
+  input(type='text', name='description', required='', placeholder='Description')
+  label.form-control-label(for='inputSuccess1') User Name
+  input(type='text', name='author', required='', placeholder='User Name')
+  label.form-control-label(for='inputSuccess1') Image
+  input(type='url', name='url',  placeholder='Insert image url')
+  .article__detail-body
+    textarea(name='body', required='', placeholder='enter article here')
+  input(type='submit')
+include partials/footer.pug

@@ -27,6 +27,7 @@ const makeArticle = (data, callback) => {  /*===========MAKE ARTICLE============
   pool.query(sql, dataObj, (err, res) => {
     callback(err, res);
   })
+
 }
 
 

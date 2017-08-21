@@ -24,7 +24,7 @@ body{
 .row .col{
   border-radius: 25px;
   border-style: solid;
-  width: 200px;
-  height: 200px;
+  width: 350px;
+  height: 350px;
   margin: 10px;
 }
