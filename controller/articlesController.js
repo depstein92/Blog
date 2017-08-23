@@ -44,11 +44,11 @@ module.exports.post = (request, res) => {
     .notEmpty()
 
 
-/*.sanitizeBody('title').escape();
-  .sanitizeBody('body').escape();
-  .sanitizeBody('author').escape();
-  .sanitizeBody('image').escape();
-  .sanitizeBody('description').escape();*/
+  request.sanitizeBody('title').escape();
+  request.sanitizeBody('body').escape();
+  request.sanitizeBody('author').escape();
+  request.sanitizeBody('image').escape();
+  request.sanitizeBody('description').escape();
 
 
   const input = {
