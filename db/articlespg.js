@@ -33,10 +33,7 @@ const makeArticle = (data, callback) => {  /*===========MAKE ARTICLE============
 
 const getArticles = (data) => { /*===============GET ARTICLES===============*/
 
-  pool.query('SELECT * FROM articles', null)
-  .then(res => {}/*console.log(res)*/)
-  .catch(err => {}/*console.log('this is an error')*/);
-
+  return pool.query('SELECT * FROM articles', null)
 }
 
 const getArticleById = function(id) {
@@ -46,29 +43,19 @@ const getArticleById = function(id) {
   }
 
 
+/*==============NEW PARTS =================*/
+const get = function(callback) {
+  pg.query('select * from articles', null, (err, res) => {
+    if (err) {
+      callback(err)
+    } else {
+      callback (null, res.rows)
+    }
+  })
+}
 
 
 
-
-//
-// makeArticle({
-//   title: 'Metallica',
-//   author: 'Ulfric StormCloak',
-//   showinmenu: false,
-//   image: 'none',
-//   description: 'Lorem ipsum blah blah',
-//   body: 'lorem lorem you lorem you...'
-// }, function(err, res){
-//   console.log(err);
-// });
-
-
-
-// module.exports.query = (queryString, queryParameters, callback) => {
-//   client.query(queryString, queryParameters, (err, res) => {
-//     callback(err, res);
-//   })
-// }
 
 
 

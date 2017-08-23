@@ -1,5 +1,5 @@
 const articles = require('../db/articlespg');
-const rowElement = require('');
+const expressValidator = require('express-validator');
 
 
 module.exports.get = function(request, response) {
@@ -11,45 +11,49 @@ module.exports.get = function(request, response) {
         message: message
       });
     }
-    response.render('test', {
+    response.render('gallery', { //gallery
       articles: list,
       title: defaultTitle
     });
   })
 }
 
-module.exports.post = (req, res) => {
+module.exports.post = (request, res) => {
   /*id,title, body, author,showinmenu,image,description*/
 
-  req
+  request
     .checkBody('title', 'Invalid title')
     .notEmpty()
-    .sanitizeBody('title').escape();
-  req
+
+  request
     .checkBody('body', 'Invalid body')
     .notEmpty()
-    .sanitizeBody('body').escape();
-  req
+
+  request
     .checkBody('author', 'Invalid user')
     .notEmpty()
-    .sanitizeBody('author').escape();
 
-  req
+
+  request
     .checkBody('image', 'Invalid image')
     .notEmpty()
-    .sanitizeBody('image').escape();
 
-  req
+
+  request
     .checkBody('description', 'Invalid description')
     .notEmpty()
-    .sanitizeBody('description').escape();
 
+
+/*.sanitizeBody('title').escape();
+  .sanitizeBody('body').escape();
+  .sanitizeBody('author').escape();
+  .sanitizeBody('image').escape();
+  .sanitizeBody('description').escape();*/
 
 
   const input = {
     title: request.body.title,
-
-    author: request.body.author, //??
+    author: request.body.author,
     image: request.body.image,
     description: request.body.description,
     url: request.body.url,
@@ -60,69 +64,25 @@ module.exports.post = (req, res) => {
 
   articles.makeArticle(input, (err) => {
     if (err) {
-      return res.render('/test', {
+
+      return res.render('gallery', { //changed from /gallery
         title: err.messege,
         author: '-------',
         body: err.messege,
         image: '-------',
 
        })
-			 return res.redirect('/gallery');
+			 res.redirect('gallery'); //changed from /gallery
+
     }
-
-		return {
-
-		}
-  //   return res.render('/gallery', (input) => { /*======could throw error===========*/
-  //     document.body.appendChild(
-	// `
-	// article#articlesAdded
-	//   h1=I am here
-  //   h1 ${articles.title}
-  //   h2 ${article.author}
-  //   img
-  //   | ${articles.image}
-  //   p2 ${articles.description}
-  //   p  ${article.body}
-	// 		`)
-  //   });
-
   });
 
 }
 module.exports.new = function(request, response) {
-	response.render('new', {title: 'Create new article'}) ;
+	articles.getArticles().then(function(results){
+		 response.render('makeArticle', { //changed here
+		 articles: results.rows
+	 })
+	})
+
 }
-
-
-/*res.render('/gallery', (input) => {
-	document.body.appendChild(`
-article#articlesAdded
-h1  articles.title
-h2 article.author
-img
-| articles.image
-p2 articles.description
-p  article.body
-	`)
-});*/
-
-// module.exports.show = function(request, response) {
-// 		const id = request.params.id;
-//
-// 	articles.getArticleById(parseInt(id), function(err, article) {
-// 		if (err) {
-// 			const message = err.errno === -2 ? defaultMessage : 'Try again later';
-// 			return response.render('404', {message: message, title: defaultTitle}) ;
-// 		}
-//
-// 		if (!article || article.length === 0) {
-// 			return response.render('404', {message: defaultMessage, title: defaultTitle});
-// 		}
-//
-// 		response.render('article', {
-// 				article: article,
-// 				title: article.title
-// 		});
-// 	})
-// }

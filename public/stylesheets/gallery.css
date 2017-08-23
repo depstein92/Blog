@@ -1,9 +1,7 @@
 * {
   font-family: 'Playfair Display SC', cursive;
 }
-body{
-    background-color: #727edb;
-}
+
 
 
 .container {
@@ -12,7 +10,7 @@ body{
   background-color: white;
 }
 
-.row{
+.container .row{
   display: flex;
   justify-content: space-around;
   width: inherit;
@@ -24,7 +22,7 @@ body{
 .row .col{
   border-radius: 25px;
   border-style: solid;
-  width: 350px;
-  height: 350px;
+  width: 300px;
+  height: 300px;
   margin: 10px;
 }

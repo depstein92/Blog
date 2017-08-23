@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express-validator": "^3.2.1",
     "pg": "^7.1.2",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.4.7"

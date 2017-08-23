@@ -8,15 +8,13 @@ body
         img(alt='DWE DESIGNS', src='')
   .container
     .row
-    -
-     articles.forEach((article) => {
      .col
-       h1 articles.title
-        h2 article.author
+       h1 #{title}
+        h2 #{description}
         img
-        | articles.image
-        p2 articles.description
-        p  article.body
-     })
+        | #{image}
+        p2 #{description}
+        p  #{body}
+
 
     include partials/footer.pug
